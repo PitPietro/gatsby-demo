@@ -1,6 +1,7 @@
 import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 import PitImg from "../images/pit_logo.png";
 import React, {Component} from "react";
+import { Link } from "gatsby"
 
 
 export default class Header extends Component {
@@ -30,24 +31,12 @@ export default class Header extends Component {
   render ()
   {
     return (
-      <div>
-        <Navbar fixed="top" expand="lg" variant="dark" bg={this.state.bg}>
-          <Navbar.Brand href="/">
-            <img alt="" src={PitImg} width="30" height="30" className="d-inline-block align-top"/>
-            {' '}
-            Pietro Poluzzi
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
-              <NavDropdown title="Dev" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="/dev/react">React</NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link href="/about">About</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-      </div>
+      <>
+        |<Link to="/"><img alt="" src={PitImg} width="30" height="30" className="d-inline-block align-top"/></Link>|
+        Pietro Poluzzi|
+        <Link to="/about/">About</Link>|
+        <Link to="/about-css-modules/">About CSS</Link>
+      </>
     );
   }
 }
