@@ -1,3 +1,9 @@
 html {
     background-color: lightblue;
 }
+
+code {
+    font-family: monospace;
+    font-size: medium;
+    color: black;
+}
