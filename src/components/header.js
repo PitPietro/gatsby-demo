@@ -1,42 +1,53 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import {Nav, Navbar, NavDropdown} from "react-bootstrap";
+import PitImg from "../images/pit_logo.png";
+import React, {Component} from "react";
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+export default class Header extends Component {
+  /*
+  constructor(props) {
+    super(props);
+  }
+  */
+
+  y_value = 50
+  state = {
+    bg: "transparent"
+  };
+
+  listenScrollEvent = e => {
+    if(window.scrollY < this.y_value) {
+      this.setState({bg: "dark"});
+    } else {
+      this.setState({bg: "transparent"});
+    }
+  };
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.listenScrollEvent);
+  }
+
+  render ()
+  {
+    return (
+      <div>
+        <Navbar fixed="top" expand="lg" variant="dark" bg={this.state.bg}>
+          <Navbar.Brand href="/">
+            <img alt="" src={PitImg} width="30" height="30" className="d-inline-block align-top"/>
+            {' '}
+            Pietro Poluzzi
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto">
+              <NavDropdown title="Dev" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="/dev/react">React</NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Link href="/about">About</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
+    );
+  }
 }
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header
