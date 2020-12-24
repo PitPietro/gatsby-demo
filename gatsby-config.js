@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Pietro Poluzzi`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    description: `I started programming in C and Java at high schools, then in Kotlin for Android development. I learned PHP and MySQL to understand the client-server interaction. Moreover, I’m studying C#, Angular, React and Python to enhance my programming flexibility.`,
     author: `@gatsbyjs`,
   },
   plugins: [
@@ -20,6 +20,7 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

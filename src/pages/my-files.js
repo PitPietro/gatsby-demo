@@ -47,3 +47,44 @@ export const query = graphql`
     }
   }
 `
+
+/*
+This query:
+query MyQuery {
+  allMarkdownRemark {
+    edges {
+      node {
+        frontmatter {
+          title
+          date
+        }
+        excerpt
+        timeToRead
+        html
+      }
+    }
+  }
+}
+
+Will give as result:
+{
+  "data": {
+    "allMarkdownRemark": {
+      "edges": [
+        {
+          "node": {
+            "frontmatter": {
+              "title": "Sweet Pandas Eating Sweets",
+              "date": "2020-12-24"
+            },
+            "excerpt": "Pandas are really sweet.\nHere's a video of a panda eating sweets.",
+            "timeToRead": 1,
+            "html": "<p>Pandas are really sweet.\nHere's a video of a panda eating sweets.</p>\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/4n0xNbfJLR8\" frameborder=\"0\" allowfullscreen></iframe>"
+          }
+        }
+      ]
+    }
+  },
+  "extensions": {}
+}
+ */

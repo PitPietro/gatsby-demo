@@ -1,21 +1,65 @@
 import React from "react"
+import { graphql } from "gatsby"
+import { css } from "@emotion/react"
+import { rhythm } from "../utils/typography"
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
-import { Link } from "gatsby"
 
-export default function Home() {
+export default function Home({ data }) {
+  console.log(data)
   return (
     <Layout>
-      <SEO title="Home" />
-      <h1>Homepage</h1>
-      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-        <Image />
+      <div>
+        <h1
+          css={css`
+            display: inline-block;
+            border-bottom: 1px solid;
+          `}
+        >
+          Amazing Pandas Eating Things
+        </h1>
+        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+        {data.allMarkdownRemark.edges.map(({ node }) => (
+          <div key={node.id}>
+            <h3
+              css={css`
+                margin-bottom: ${rhythm(1 / 4)};
+              `}
+            >
+              {node.frontmatter.title}{" "}
+              <span
+                css={css`
+                  color: #4981b6;
+                `}
+              >
+                ~ {node.frontmatter.date}
+              </span>
+            </h3>
+            <p>{node.excerpt}</p>
+          </div>
+        ))}
       </div>
-      <Link to={`/my-files/`} >MyFiles</Link>
     </Layout>
   )
 }
 
+export const query = graphql`
+  query {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            date(formatString: "DD/MM/YY")
+          }
+          excerpt
+        }
+      }
+    }
+  }
+`
 
-
+/*
+What's next? https://www.gatsbyjs.com/docs/tutorial/part-seven/
+ */
