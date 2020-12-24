@@ -1,19 +1,25 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from "react"
+import { css } from "@emotion/react"
+import { rhythm } from "../utils/typography"
 import Header from "./header"
-import "./layout.css"
+
 
 export default function Layout({ children }) {
   return (
-    <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
+    <div
+      css={css`
+        margin: 0 auto;
+        max-width: 700px;
+        padding: ${rhythm(2)};
+        padding-top: ${rhythm(1.5)};
+      `}
+    >
       <Header />
       {children}
     </div>
   )
 }
+
+/*
+Static Query: https://www.gatsbyjs.com/docs/how-to/querying-data/static-query/
+ */

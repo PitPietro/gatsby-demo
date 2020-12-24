@@ -1,42 +1,46 @@
-import {Nav, Navbar, NavDropdown} from "react-bootstrap";
-import PitImg from "../images/pit_logo.png";
-import React, {Component} from "react";
-import { Link } from "gatsby"
+import PitImg from "../images/pit_logo.png"
+import React from "react"
+import { css } from "@emotion/react"
+import { graphql, Link, useStaticQuery } from "gatsby"
+import { rhythm } from "../utils/typography"
 
 
-export default class Header extends Component {
-  /*
-  constructor(props) {
-    super(props);
-  }
-  */
 
-  y_value = 50
-  state = {
-    bg: "transparent"
-  };
+export default function Header() {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+  return (
+    <>
+      <Link to={`/`}>
+        <img alt="" src={PitImg} width="40" height="40" className="d-inline-block align-top"/>
+        <h3
+          css={css`
+            margin-bottom: ${rhythm(2)};
+            display: inline-block;
+            font-style: normal;
+          `}
+        >
+          {data.site.siteMetadata.title}
+        </h3>
+      </Link>
+      <Link
+        to={`/about/`}
+        css={css`
+          float: right;
+        `}
+      >
+        About
+      </Link>
 
-  listenScrollEvent = e => {
-    if(window.scrollY < this.y_value) {
-      this.setState({bg: "dark"});
-    } else {
-      this.setState({bg: "transparent"});
-    }
-  };
-
-  componentDidMount() {
-    window.addEventListener("scroll", this.listenScrollEvent);
-  }
-
-  render ()
-  {
-    return (
-      <>
-        |<Link to="/"><img alt="" src={PitImg} width="30" height="30" className="d-inline-block align-top"/></Link>|
-        Pietro Poluzzi|
-        <Link to="/about/">About</Link>|
-        <Link to="/about-css-modules/">About CSS</Link>
-      </>
-    );
-  }
+    </>
+  )
 }

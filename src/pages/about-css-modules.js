@@ -1,6 +1,7 @@
 import React from "react"
 import styles from "./about-css-modules.module.css"
 import Container from "../components/container"
+import Layout from "../components/layout"
 
 
 console.log(styles)
@@ -21,14 +22,16 @@ const User = props => (
 
 export default function About() {
   return (
-    <Container>
-      <h1 className>About CSS Modules</h1>
-      <p>CSS Modules are cool</p>
-      <User
-        username="Christian Bale"
-        avatar="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.gOcA4QZSM9PZ1yRVcmAGSAHaKZ%26pid%3DApi&f=1"
-        excerpt="I am Batman"
-      />
-    </Container>
+    <Layout>
+      <Container>
+        <h1 className>About CSS Modules</h1>
+        <p>CSS Modules are cool</p>
+        <User
+          username="Christian Bale"
+          avatar="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.gOcA4QZSM9PZ1yRVcmAGSAHaKZ%26pid%3DApi&f=1"
+          excerpt="I am Batman"
+        />
+      </Container>
+    </Layout>
   )
 }
