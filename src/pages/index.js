@@ -72,5 +72,15 @@ export const query = graphql`
 `
 
 /*
-What's next? https://www.gatsbyjs.com/docs/tutorial/part-seven/
+What's next? https://www.gatsbyjs.com/docs/adding-tags-and-categories-to-blog-posts/
+
+
+https://www.gatsbyjs.com/docs/how-to/styling/using-web-fonts/
+
+Fonts:
+https://fonts.google.com/specimen/Josefin+Slab
+/Monoton
+/Baskervville
+/Redressed
+/Bungee+Outline
  */
