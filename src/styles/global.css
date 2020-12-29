@@ -30,3 +30,7 @@ html {
 .header-link-right {
   float: right;
 }
+
+.tags-num {
+  font-size: large;
+}

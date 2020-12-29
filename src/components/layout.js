@@ -3,6 +3,7 @@ import { css } from "@emotion/react"
 import { rhythm } from "../utils/typography"
 import Header from "./header"
 import "./layout.css"
+import Footer from "./footer"
 
 export default function Layout({ children }) {
   return (
@@ -16,6 +17,7 @@ export default function Layout({ children }) {
     >
       <Header />
       {children}
+      <Footer />
     </div>
   )
 }

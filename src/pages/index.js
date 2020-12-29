@@ -1,13 +1,14 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+import Tags from "../templates/tags"
 
 export default function Home({ data }) {
-  console.log(data)
   return (
     <Layout>
       <div>
         <h1 className="index-title">Fullstack Dev</h1>
+        <h4>Take a loot at the <Link to={`/tags/`}>Tags</Link></h4>
         <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
