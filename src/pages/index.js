@@ -1,7 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import { css } from "@emotion/react"
-import { rhythm } from "../utils/typography"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 
 export default function Home({ data }) {
@@ -9,39 +7,18 @@ export default function Home({ data }) {
   return (
     <Layout>
       <div>
-        <h1
-          css={css`
-            display: inline-block;
-            border-bottom: 1px solid;
-          `}
-        >
-          Amazing Pandas Eating Things
-        </h1>
+        <h1 className="index-title">Fullstack Dev</h1>
         <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
-            <Link
-              to={node.fields.slug}
-              css={css`
-                text-decoration: none;
-                color: inherit;
-              `}
-            >
-            <h3
-              css={css`
-                margin-bottom: ${rhythm(1 / 4)};
-              `}
-            >
-              {node.frontmatter.title}{" "}
-              <span
-                css={css`
-                  color: #4981b6;
-                `}
-              >
+            <Link to={node.fields.slug} className="index-post-link">
+              <h3 className="index-h3">
+                {node.frontmatter.title}{" "}
+                <span className="index-span">
                 ~ {node.frontmatter.date}
               </span>
-            </h3>
-            <p>{node.excerpt}</p>
+              </h3>
+              <p>{node.excerpt}</p>
             </Link>
           </div>
         ))}
@@ -72,9 +49,6 @@ export const query = graphql`
 `
 
 /*
-What's next? https://www.gatsbyjs.com/docs/adding-tags-and-categories-to-blog-posts/
-
-
 https://www.gatsbyjs.com/docs/how-to/styling/using-web-fonts/
 
 Fonts:
